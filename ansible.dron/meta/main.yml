@@ -1,0 +1,29 @@
+galaxy_info:
+  author: your name
+  description:
+  company: paralect
+
+  # Some suggested licenses:
+  # - BSD (default)
+  # - MIT
+  # - GPLv2
+  # - GPLv3
+  # - Apache
+  # - CC-BY
+  license: license (GPLv2, CC-BY, etc)
+
+  min_ansible_version: 1.2
+  platforms:
+    name: Ubuntu
+  versions:
+    - trusty
+  categories:
+    - cloud
+    - system
+
+  galaxy_tags:
+    - drone
+    - ci
+
+dependencies:
+    - { role: angstwad.docker_ubuntu, pip_version_docker_py: 1.9.0 }
