@@ -1,5 +1,5 @@
 galaxy_info:
-  author: your name
+  author:
   description:
   company: paralect
 
@@ -24,6 +24,3 @@ galaxy_info:
   galaxy_tags:
     - drone
     - ci
-
-dependencies:
-    - { role: angstwad.docker_ubuntu, pip_version_docker_py: 1.9.0 }

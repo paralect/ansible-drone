@@ -1,2 +1,3 @@
----
-# defaults file for ansible.dron
+server_setup_ssl: false
+drone_agents: [{name: "Nancy"}]
+drone_github_context: service-stack-ci/drone

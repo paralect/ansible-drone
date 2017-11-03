@@ -1,2 +1,4 @@
 ---
-# tasks file for ansible.dron
+- include: setup-nginx.yml
+  when: install-nginx == "y"
+- include: deploy.yml

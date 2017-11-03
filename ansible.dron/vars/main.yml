@@ -1,2 +1,9 @@
----
-# vars file for ansible.dron
+drone_version: 0.8.0
+
+server_ssl_key_path: "/etc/nginx/ssl/drone-ci.key"
+server_ssl_cert_path: "/etc/nginx/ssl/drone-ci.crt"
+
+nginx_user: www-data
+nginx_pid: /var/run/nginx.pid
+nginx_worker_processes: 2
+nginx_worker_connections: 1024
