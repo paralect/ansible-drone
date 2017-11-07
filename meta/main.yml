@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Paralect, LLC
   description: Drone CI deployment with Github integration and PostgreSQL database
@@ -5,9 +6,9 @@ galaxy_info:
   license: MIT
   min_ansible_version: 1.2
   platforms:
-    - name: Ubuntu
+  - name: Ubuntu
     versions:
-      - trusty
+    - trusty
   categories:
     - cloud
     - system
