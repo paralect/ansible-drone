@@ -9,11 +9,10 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - trusty
-  categories:
-    - cloud
-    - system
   galaxy_tags:
     - drone
     - ci
+    - system
+    - cloud
   dependencies:
     - { role: angstwad.docker_ubuntu }
