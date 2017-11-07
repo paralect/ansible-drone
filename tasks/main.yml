@@ -1,4 +1,3 @@
 ---
-- include: setup-nginx.yml
-  when: install-nginx == "y"
-- include: deploy.yml
+  - include: database.yml
+  - include: drone.yml

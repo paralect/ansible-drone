@@ -1,0 +1,16 @@
+- name: start postgres for drone ci
+  docker_container:
+    name: postgres
+    image: postgres:9.6.1
+    state: started
+    restart_policy: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - "{{drone_postress_data_dir}}:/var/lib/postgresql/data"
+    env:
+      POSTGRES_PASSWORD: "{{drone_postgress_password}}"
+      POSTGRES_USER: "{{drone_postgress_user}}"
+      POSTGRES_DB: "{{drone_postgress_db}}"
+  tags:
+    - postgres
