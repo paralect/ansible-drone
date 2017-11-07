@@ -1,7 +1,7 @@
-Role Name
+Ansible Drone
 =========
 
-A brief description of the role goes here.
+An ansible role for the [drone](https://github.com/drone/drone) CI deployment
 
 Requirements
 ------------
