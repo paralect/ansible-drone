@@ -1,31 +1,95 @@
 Ansible Drone
 =========
 
-An ansible role for the [drone](https://github.com/drone/drone) CI deployment with Github integration and PostgreSQL database
+An ansible role for the [drone](https://github.com/drone/drone) CI deployment with Github integration and PostgreSQL database.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+[Docker](https://www.docker.com/) must be installed on the server in order to use this role. If you don't have docker on your server we recommend [angstwad.docker_ubuntu](https://github.com/angstwad/docker.ubuntu) Ansible role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Available variables:
+
+```
+# Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
+drone_version: latest
+
+# List of users with admin access to the drone, readme more: http://docs.drone.io/user-management/
+drone_admins: ""
+
+# Name of the docker agent container, you can add more than one agent
+drone_agents: [{name: "Nancy"}]
+
+# the url, where drone instance will be publicly available
+# typically you would have nginx in front of Drone CI
+drone_host:
+
+# Drone secret key, used for private communication between agent and web UI
+# more info: http://docs.drone.io/install-for-github/
+drone_secret: hTirsXmrY4YsyK79ELgB
+
+# Github oauth application client identifier, more info http://docs.drone.io/install-for-github/
+drone_github_client:
+# Github oauth application client secret, more info http://docs.drone.io/install-for-github/
+drone_github_secret:
+
+# A password to postress db used by drone
+drone_postgress_password: droneRocks23@p
+# A username to postress db used by drone, read more: http://docs.drone.io/database-settings/
+drone_postgress_user: drone
+# A name of to postress db used by drone, read more: http://docs.drone.io/database-settings/
+drone_postgress_db: drone
+# a directory on a host machine, where postresql data stored
+drone_postress_data_dir: /drone-postgres-data
+
+# Internal drone ui http url used by nginx to proxy traffic. For example: http://localhost:8000
+nginx_drone_internal_host: http://localhost:8000
+
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+[Docker](https://www.docker.com/) must be installed on the server in order to use this role. If you don't have docker on your server we recommend [angstwad.docker_ubuntu](https://github.com/angstwad/docker.ubuntu) Ansible role.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```
+---
+- name: Deploy drone CI server
+  hosts: drone
+  become_user: root
+  become: true
+  roles:
+    - role: paralect.drone
+      # Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
+      drone_version: latest
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+      # the url, where drone instance will be publicly available
+      # typically you would have nginx in front of Drone CI
+      drone_host: http://178.62.116.103
+
+      # Drone secret key, used for private communication between agent and web UI
+      # more info: http://docs.drone.io/install-for-github/
+      drone_secret: hTirsXmrY4YsyK79ELgB
+
+      # Github oauth application client identifier and secret, more info http://docs.drone.io/install-for-github/
+      drone_github_client:
+      drone_github_secret:
+
+      # A password to postress db used by drone
+      drone_postgress_password: droneRocks23@p
+      # A username to postress db used by drone, read more: http://docs.drone.io/database-settings/
+      drone_postgress_user: drone
+      # A name of to postress db used by drone, read more: http://docs.drone.io/database-settings/
+      drone_postgress_db: drone
+      # a directory on a host machine, where postresql data stored
+      drone_postress_data_dir: /drone-postgres-data
+```
 
 License
 -------

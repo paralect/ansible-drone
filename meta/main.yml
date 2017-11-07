@@ -14,5 +14,3 @@ galaxy_info:
     - ci
     - system
     - cloud
-  dependencies:
-    - { role: angstwad.docker_ubuntu }
