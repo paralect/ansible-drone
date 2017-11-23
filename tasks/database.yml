@@ -7,7 +7,7 @@
     ports:
       - "5432:5432"
     volumes:
-      - "{{drone_postress_data_dir}}:/var/lib/postgresql/data"
+      - "{{drone_postgress_data_dir}}:/var/lib/postgresql/data"
     env:
       POSTGRES_PASSWORD: "{{drone_postgress_password}}"
       POSTGRES_USER: "{{drone_postgress_user}}"
