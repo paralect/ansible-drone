@@ -1,0 +1,22 @@
+{
+  "name": "ansible-drone",
+  "version": "1.0.0",
+  "description": "An ansible role for the drone ci",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paralect/ansible-drone.git"
+  },
+  "author": "Paralect",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paralect/ansible-drone/issues"
+  },
+  "scripts": {
+    "add-contributor": "all-contributors add",
+    "generate-contributors": "all-contributors generate"
+  },
+  "homepage": "https://github.com/paralect/ansible-drone#readme",
+  "devDependencies": {
+    "all-contributors-cli": "5.2.1"
+  }
+}
