@@ -15,10 +15,19 @@ drone_host:
 # more info: http://docs.drone.io/install-for-github/
 drone_secret: hTirsXmrY4YsyK79ELgB
 
+# Integration type used by Drone CI
+# Available types: {github,bitbucket_cloud}
+drone_integration: github
+
 # Github oauth application client identifier, more info http://docs.drone.io/install-for-github/
 drone_github_client:
 # Github oauth application client secret, more info http://docs.drone.io/install-for-github/
 drone_github_secret:
+
+# Bitbucket Cloud oauth application client key, more info http://docs.drone.io/install-for-bitbucket-cloud/
+drone_bitbucket_key:
+# Bitbucket Cloud oauth application client secret, more info http://docs.drone.io/install-for-bitbucket-cloud/
+drone_bitbucket_secret:
 
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p

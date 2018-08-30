@@ -21,11 +21,14 @@
       DRONE_OPEN: "false"
       DRONE_ADMIN: "{{drone_admins}}"
       DRONE_ADMIN_ALL: "false"
-      DRONE_GITHUB: "true"
+      DRONE_GITHUB: "{{drone_integration == 'github'}}"
       DRONE_GITHUB_CLIENT: "{{drone_github_client}}"
       DRONE_GITHUB_SECRET: "{{drone_github_secret}}"
       DRONE_GITHUB_SKIP_VERIFY: "true"
       DRONE_GITHUB_CONTEXT: "continuous-integration/drone"
+      DRONE_BITBUCKET: "{{drone_integration == 'bitbucket_cloud'}}"
+      DRONE_BITBUCKET_CLIENT: "{{drone_bitbucket_key}}"
+      DRONE_BITBUCKET_SECRET: "{{drone_bitbucket_secret}}"
   tags:
     - drone
     - server
