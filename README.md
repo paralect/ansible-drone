@@ -13,7 +13,7 @@
 [![Follow](https://img.shields.io/twitter/follow/paralect.svg?style=social&label=Follow)](https://twitter.com/paralect)
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/paralect/ansible-drone.svg?style=social)](https://twitter.com/intent/tweet?text=I%27m%20using%20Stack%20components%20to%20build%20my%20next%20product%20🚀.%20Check%20it%20out:%20https://github.com/paralect/ansible-drone)
 
-An ansible role for the [drone](https://github.com/drone/drone) CI deployment with Github integration and PostgreSQL database.
+An ansible role for the [drone](https://github.com/drone/drone) CI deployment with Github/Bitbucket Cloud integration and PostgreSQL database.
 
 ## Role Variables
 
@@ -26,8 +26,11 @@ Available variables:
 |**`drone_agents`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
 |**`drone_host`**|`""`|The url, where drone instance will be publicly available. Typically you would have nginx in front of Drone CI|
 |**`drone_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](http://docs.drone.io/install-for-github)|
+|**`drone_integration`**|`github`|Integration type used by Drone CI. Available types: {`github`,`bitbucket_cloud`}|
 |**`drone_github_client`**|`""`|Github oauth application client identifier, [more info](http://docs.drone.io/install-for-github)|
 |**`drone_github_secret`**|`""`|Github oauth application client secret, [more info]( http://docs.drone.io/install-for-github)|
+|**`drone_bitbucket_key`**|`""`|Bitbucket Cloud oauth application client key, [more info](http://docs.drone.io/install-for-bitbucket-cloud/)|
+|**`drone_bitbucket_secret`**|`""`|Bitbucket Cloud oauth application client secret, [more info](http://docs.drone.io/install-for-bitbucket-cloud/)|
 |**`drone_postgress_password`**|`droneRocks23@p`|A password to postgress db used by drone|
 |**`drone_postgress_user`**|`drone`|A username to postgress db used by drone, [read more](http://docs.drone.io/database-settings)|
 |**`drone_postgress_db`**|`drone`|A name of to postgress db used by drone, [read more](http://docs.drone.io/database-settings)|
@@ -71,9 +74,12 @@ Example of the playbook file:
       # more info: http://docs.drone.io/install-for-github/
       drone_secret: hTirsXmrY4YsyK79ELgB
 
-      # Github oauth application client identifier and secret, more info http://docs.drone.io/install-for-github/
-      drone_github_client:
-      drone_github_secret:
+      # Drone integration type
+      drone_integration: bitbucket_cloud
+
+      # Bitbucket Cloud oauth application client key and secret, more info http://docs.drone.io/install-for-bitbucket-cloud/
+      drone_bitbucket_key:
+      drone_bitbucket_secret:
 
       # A password to postgress db used by drone
       drone_postgress_password: droneRocks23@p
