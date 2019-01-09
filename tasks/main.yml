@@ -1,3 +1,2 @@
 ---
-  - include: database.yml
   - include: drone.yml

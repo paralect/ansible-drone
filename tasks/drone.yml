@@ -9,15 +9,13 @@
       - "9000:9000"
     volumes:
       - /drone:/var/lib/drone/
-    links:
-      - postgres
     env:
       DRONE_HOST: "{{drone_host}}"
       DRONE_SERVER_ADDR: ":8000"
       DRONE_DEBUG: "true"
       DRONE_SECRET: "{{drone_secret}}"
-      DRONE_DATABASE_DRIVER: postgres
-      DRONE_DATABASE_DATASOURCE: postgres://{{drone_postgress_user}}:{{drone_postgress_password}}@postgres:5432/{{drone_postgress_db}}?sslmode=disable
+      DRONE_DATABASE_DRIVER: "{{drone_database_driver}}"
+      DRONE_DATABASE_DATASOURCE: "{{ drone_mysql if drone_database_driver == 'mysql' else drone_postgres }}"
       DRONE_OPEN: "false"
       DRONE_ADMIN: "{{drone_admins}}"
       DRONE_ADMIN_ALL: "false"

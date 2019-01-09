@@ -29,12 +29,19 @@ drone_bitbucket_key:
 # Bitbucket Cloud oauth application client secret, more info http://docs.drone.io/install-for-bitbucket-cloud/
 drone_bitbucket_secret:
 
-# A password to postgress db used by drone
-drone_postgress_password: droneRocks23@p
-# A username to postgress db used by drone, read more: http://docs.drone.io/database-settings/
-drone_postgress_user: drone
-# A name of to postgress db used by drone, read more: http://docs.drone.io/database-settings/
-drone_postgress_db: drone
+# The db engine used by drone
+drone_database_driver: postgres
+# A password to db used by drone
+drone_database_password: droneRocks23@p
+# A username to db used by drone, read more: http://docs.drone.io/database-settings/
+drone_database_user: drone
+# A name of to db used by drone, read more: http://docs.drone.io/database-settings/
+drone_database_name: drone
+# Host of the db
+drone_database_host: 172.17.0.1:5432
+#concat
+drone_mysql: "{{ drone_database_user }}:{{ drone_database_password }}@tcp({{ drone_database_host }})/{{ drone_database_name }}?parseTime=true"
+drone_postgres: "postgres:// {{ drone_database_user }}:{{ drone_database_password }}@{{ drone_database_host }}/{{ drone_database_name }}?sslmode=disable"
 # a directory on a host machine, where postgresql data stored
 drone_postgress_data_dir: /drone-postgres-data
 
