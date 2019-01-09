@@ -29,6 +29,8 @@
       DRONE_BITBUCKET: "{{drone_integration == 'bitbucket_cloud'}}"
       DRONE_BITBUCKET_CLIENT: "{{drone_bitbucket_key}}"
       DRONE_BITBUCKET_SECRET: "{{drone_bitbucket_secret}}"
+      DRONE_GITEA: "{{drone_integration == 'gitea'}}"
+      DRONE_GITEA_SERVER: "{{drone_gitea_server}}"
   tags:
     - drone
     - server
