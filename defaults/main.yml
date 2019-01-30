@@ -7,6 +7,9 @@ drone_admins: ""
 # Name of the docker agent container, you can add more than one agent
 drone_agents: [{name: "Nancy"}]
 
+# Should drone be publicly accessable? Usefule for e.g. gitea with closed registration
+drone_open: false
+
 # the url, where drone instance will be publicly available
 # typically you would have nginx in front of Drone CI
 drone_host:

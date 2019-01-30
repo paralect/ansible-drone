@@ -16,7 +16,7 @@
       DRONE_SECRET: "{{drone_secret}}"
       DRONE_DATABASE_DRIVER: "{{drone_database_driver}}"
       DRONE_DATABASE_DATASOURCE: "{{ drone_mysql if drone_database_driver == 'mysql' else drone_postgres }}"
-      DRONE_OPEN: "true"
+      DRONE_OPEN: "{{drone_open}}"
       DRONE_ADMIN: "{{drone_admins}}"
       DRONE_GITHUB: "{{drone_integration == 'github'}}"
       DRONE_GITHUB_CLIENT: "{{drone_github_client}}"
