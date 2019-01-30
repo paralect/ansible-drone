@@ -1,7 +1,7 @@
 - name: run drone server
   docker_container:
     name: drone-server
-    image: "drone/drone:{{drone_version}}"
+    image: "{{ drone_dockerhub_namespace }}/drone:{{drone_version}}"
     state: started
     restart_policy: always
     ports:
@@ -35,7 +35,7 @@
 - name: run drone agent
   docker_container:
     name: "agent-{{item.name}}"
-    image: "drone/agent:{{drone_version}}"
+    image: "{{ drone_dockerhub_namespace }}/agent:{{drone_version}}"
     privileged: yes
     state: started
     restart_policy: always
