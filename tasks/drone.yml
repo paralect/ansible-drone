@@ -15,8 +15,8 @@
     links:
       - postgres
     env:
-      DRONONE_SERVER_HOST: "{{drone_server_host}}"
-      DRONNE_SERVER_ADDR: ":8000"
+      DRONE_SERVER_HOST: "{{drone_server_host}}"
+      DRONE_SERVER_ADDR: ":8000"
       DRONE_LOGS_DEBUG: "true"
       DRONE_RPC_SECRET: "{{drone_rpc_secret}}"
       DRONE_DATABASE_DRIVER: postgres
