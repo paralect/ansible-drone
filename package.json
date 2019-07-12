@@ -1,6 +1,6 @@
 {
   "name": "ansible-drone",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An ansible role for the drone ci",
   "repository": {
     "type": "git",
