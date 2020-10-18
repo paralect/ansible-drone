@@ -1,11 +1,9 @@
 # Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
 drone_version: latest
 
-# docker hub Namespace (user name) to pull images from
-drone_dockerhub_namespace: drone
-
-# List of users with admin access to the drone, readme more: http://docs.drone.io/user-management/
-drone_admins: ""
+# Initial administrative account, which can be used to grant the administrator role to additional accounts.
+# Read more: https://docs.drone.io/administration/user/admins/
+drone_user_create: "admin"
 
 # Name of the docker agent container, you can add more than one agent
 drone_agents: [{name: "Nancy"}]
@@ -25,15 +23,21 @@ drone_secret: hTirsXmrY4YsyK79ELgB
 # Available types: {github,bitbucket_cloud,gitea}
 drone_integration: github
 
-# Github oauth application client identifier, more info http://docs.drone.io/install-for-github/
-drone_github_client:
-# Github oauth application client secret, more info http://docs.drone.io/install-for-github/
-drone_github_secret:
+# A string containing your Drone server protocol scheme.
+# This value should be set to http or https.
+drone_server_proto: http
 
-# Bitbucket Cloud oauth application client key, more info http://docs.drone.io/install-for-bitbucket-cloud/
-drone_bitbucket_key:
-# Bitbucket Cloud oauth application client secret, more info http://docs.drone.io/install-for-bitbucket-cloud/
-drone_bitbucket_secret:
+# A string containing your Drone server hostname or IP address.
+drone_server_host:
+
+# Drone secret key, used for private communication between agent and web UI
+# more info: https://docs.drone.io/reference/server/drone-rpc-secret/
+drone_rpc_secret: hTirsXmrY4YsyK79ELgB
+
+# Github oauth application client id, more info https://docs.drone.io/installation/github/single-machine/
+drone_github_client_id:
+# Github oauth application client secret, more info https://docs.drone.io/installation/github/single-machine/
+drone_github_client_secret:
 
 # The db engine used by drone
 drone_database_driver: postgres
@@ -51,12 +55,14 @@ drone_postgres: "postgres:// {{ drone_database_user }}:{{ drone_database_passwor
 
 # Gitea server url
 drone_gitea_server:
+drone_gitea_client_id:
+drone_gitea_client_secret:
 
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p
-# A username to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+# A username to postgress db used by drone, read more: https://docs.drone.io/administration/server/database/
 drone_postgress_user: drone
-# A name of to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+# A name of to postgress db used by drone, read more: https://docs.drone.io/administration/server/database/
 drone_postgress_db: drone
 # a directory on a host machine, where postgresql data stored
 drone_postgress_data_dir: /drone-postgres-data

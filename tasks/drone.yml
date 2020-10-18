@@ -7,27 +7,26 @@
     ports:
       - "8000:8000"
       - "9000:9000"
+      - "127.0.0.1:8080:80"
+      - "127.0.0.1:8443:443"
     volumes:
       - /drone:/var/lib/drone/
     env:
-      DRONE_HOST: "{{drone_host}}"
+      DRONE_SERVER_HOST: "{{drone_server_host}}"
       DRONE_SERVER_ADDR: ":8000"
-      DRONE_DEBUG: "true"
-      DRONE_SECRET: "{{drone_secret}}"
+      DRONE_SERVER_PROTO: "https"
+      DRONE_LOGS_DEBUG: "true"
+      DRONE_RPC_SECRET: "{{drone_rpc_secret}}"
       DRONE_DATABASE_DRIVER: "{{drone_database_driver}}"
       DRONE_DATABASE_DATASOURCE: "{{ drone_mysql if drone_database_driver == 'mysql' else drone_postgres }}"
-      DRONE_OPEN: "{{drone_open}}"
-      DRONE_ADMIN: "{{drone_admins}}"
-      DRONE_GITHUB: "{{drone_integration == 'github'}}"
-      DRONE_GITHUB_CLIENT: "{{drone_github_client}}"
-      DRONE_GITHUB_SECRET: "{{drone_github_secret}}"
-      DRONE_GITHUB_SKIP_VERIFY: "true"
-      DRONE_GITHUB_CONTEXT: "continuous-integration/drone"
-      DRONE_BITBUCKET: "{{drone_integration == 'bitbucket_cloud'}}"
-      DRONE_BITBUCKET_CLIENT: "{{drone_bitbucket_key}}"
-      DRONE_BITBUCKET_SECRET: "{{drone_bitbucket_secret}}"
       DRONE_GITEA: "{{drone_integration == 'gitea'}}"
-      DRONE_GITEA_URL: "{{drone_gitea_server}}"
+      DRONE_GITEA_SERVER: "{{drone_gitea_server}}"
+      DRONE_GITEA_CLIENT_ID: "{{drone_gitea_client_id}}"
+      DRONE_GITEA_CLIENT_SECRET: "{{drone_gitea_client_secret}}"
+      DRONE_USER_CREATE: "{{drone_user_create}}"
+      DRONE_GITHUB_CLIENT_ID: "{{drone_github_client_id}}"
+      DRONE_GITHUB_CLIENT_SECRET: "{{drone_github_client_secret}}"
+      DRONE_GITHUB_SKIP_VERIFY: "true"
   tags:
     - drone
     - server
@@ -44,9 +43,9 @@
     links:
       - drone-server
     env:
-      DRONE_SERVER: "drone-server:9000"
-      DRONE_DEBUG: "true"
-      DRONE_SECRET: "{{drone_secret}}"
+      DRONE_RPC_SERVER: "drone-server:9000"
+      DRONE_RPC_SECRET: "{{drone_rpc_secret}}"
+      DRONE_LOGS_DEBUG: "true"
   with_items: "{{drone_agents}}"
   tags:
     - drone

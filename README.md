@@ -2,7 +2,7 @@
 
 [![Stack](https://raw.githubusercontent.com/paralect/stack/master/stack-component-template/stack.png)](https://github.com/paralect/stack)
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-drone-blue.svg?style=flat-square)](https://galaxy.ansible.com/paralect/drone)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/paralect/ansible-mongo/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -22,18 +22,15 @@ Available variables:
 |Name|Default|Description|
 |:--:|:--:|:----------|
 |**`drone_version`**|`latest`|Version of Drone CI, see other versions [here](https://hub.docker.com/r/drone/drone/tags)|
-|**`drone_admins`**|`""`|List of users with admin access to the drone, readme [more]( http://docs.drone.io/user-management)|
+|**`drone_user_create`**|`""`|Initial administrative account, which can be used to grant the administrator role to additional accounts. Read more [more](https://docs.drone.io/administration/user/admins)|
 |**`drone_agents`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
-|**`drone_host`**|`""`|The url, where drone instance will be publicly available. Typically you would have nginx in front of Drone CI|
-|**`drone_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](http://docs.drone.io/install-for-github)|
-|**`drone_integration`**|`github`|Integration type used by Drone CI. Available types: {`github`,`bitbucket_cloud`}|
-|**`drone_github_client`**|`""`|Github oauth application client identifier, [more info](http://docs.drone.io/install-for-github)|
-|**`drone_github_secret`**|`""`|Github oauth application client secret, [more info]( http://docs.drone.io/install-for-github)|
-|**`drone_bitbucket_key`**|`""`|Bitbucket Cloud oauth application client key, [more info](http://docs.drone.io/install-for-bitbucket-cloud/)|
-|**`drone_bitbucket_secret`**|`""`|Bitbucket Cloud oauth application client secret, [more info](http://docs.drone.io/install-for-bitbucket-cloud/)|
+|**`drone_server_host`**|`""`|A string containing your Drone server hostname or IP address|
+|**`drone_rpc_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](https://docs.drone.io/installation/reference/drone-rpc-secret/)|
+|**`drone_github_client_id`**|`""`|Github oauth application client identifier, [more info](https://docs.drone.io/installation/providers/github/)|
+|**`drone_github_client_secret`**|`""`|Github oauth application client secret, [more info](https://docs.drone.io/installation/providers/github/)|
 |**`drone_postgress_password`**|`droneRocks23@p`|A password to postgress db used by drone|
-|**`drone_postgress_user`**|`drone`|A username to postgress db used by drone, [read more](http://docs.drone.io/database-settings)|
-|**`drone_postgress_db`**|`drone`|A name of to postgress db used by drone, [read more](http://docs.drone.io/database-settings)|
+|**`drone_postgress_user`**|`drone`|A username to postgress db used by drone, [read more](https://docs.drone.io/installation/storage/database/)|
+|**`drone_postgress_db`**|`drone`|A name of to postgress db used by drone, [read more](https://docs.drone.io/installation/storage/database/)|
 |**`drone_postgress_data_dir`**|`/drone-postgres-data`|A directory on a host machine, where postgresql data stored|
 |**`nginx_drone_internal_host`**|`http://localhost:8000`|Internal drone ui http url used by nginx to proxy traffic. For example: http://localhost:8000|
 
@@ -68,24 +65,21 @@ Example of the playbook file:
 
       # the url, where drone instance will be publicly available
       # typically you would have nginx in front of Drone CI
-      drone_host: http://178.62.116.103
+      drone_server_host: 178.62.116.103
 
       # Drone secret key, used for private communication between agent and web UI
-      # more info: http://docs.drone.io/install-for-github/
-      drone_secret: hTirsXmrY4YsyK79ELgB
+      # more info: https://docs.drone.io/reference/server/drone-rpc-secret/
+      drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 
-      # Drone integration type
-      drone_integration: bitbucket_cloud
-
-      # Bitbucket Cloud oauth application client key and secret, more info http://docs.drone.io/install-for-bitbucket-cloud/
-      drone_bitbucket_key:
-      drone_bitbucket_secret:
+      # Github oauth application client id and secret, more info https://docs.drone.io/installation/github/single-machine/
+      drone_github_client_id:
+      drone_github_client_secret:
 
       # A password to postgress db used by drone
       drone_postgress_password: droneRocks23@p
-      # A username to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+      # A username to postgress db used by drone, read more: https://docs.drone.io/administration/server/database/
       drone_postgress_user: drone
-      # A name of to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+      # A name of to postgress db used by drone, read more: https://docs.drone.io/administration/server/database/
       drone_postgress_db: drone
       # a directory on a host machine, where postgresql data stored
       drone_postgress_data_dir: /drone-postgres-data
