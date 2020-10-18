@@ -25,12 +25,12 @@ Available variables:
 |**`drone_user_create`**|`""`|Initial administrative account, which can be used to grant the administrator role to additional accounts. Read more [more](https://docs.drone.io/administration/user/admins)|
 |**`drone_agents`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
 |**`drone_server_host`**|`""`|A string containing your Drone server hostname or IP address|
-|**`drone_rpc_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](https://docs.drone.io/reference/server/drone-rpc-secret)|
-|**`drone_github_client_id`**|`""`|Github oauth application client identifier, [more info](https://docs.drone.io/installation/github/single-machine)|
-|**`drone_github_client_secret`**|`""`|Github oauth application client secret, [more info](https://docs.drone.io/installation/github/single-machine)|
+|**`drone_rpc_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](https://docs.drone.io/installation/reference/drone-rpc-secret/)|
+|**`drone_github_client_id`**|`""`|Github oauth application client identifier, [more info](https://docs.drone.io/installation/providers/github/)|
+|**`drone_github_client_secret`**|`""`|Github oauth application client secret, [more info](https://docs.drone.io/installation/providers/github/)|
 |**`drone_postgress_password`**|`droneRocks23@p`|A password to postgress db used by drone|
-|**`drone_postgress_user`**|`drone`|A username to postgress db used by drone, [read more](https://docs.drone.io/administration/server/database)|
-|**`drone_postgress_db`**|`drone`|A name of to postgress db used by drone, [read more](https://docs.drone.io/administration/server/database)|
+|**`drone_postgress_user`**|`drone`|A username to postgress db used by drone, [read more](https://docs.drone.io/installation/storage/database/)|
+|**`drone_postgress_db`**|`drone`|A name of to postgress db used by drone, [read more](https://docs.drone.io/installation/storage/database/)|
 |**`drone_postgress_data_dir`**|`/drone-postgres-data`|A directory on a host machine, where postgresql data stored|
 |**`nginx_drone_internal_host`**|`http://localhost:8000`|Internal drone ui http url used by nginx to proxy traffic. For example: http://localhost:8000|
 
